@@ -1,77 +1,79 @@
 #include "main.h"
 #include <stdarg.h>
-#include <stdlib.h>
+
 /**
- * print_integer_recursive - print an integer in recursive
- * @num: pointer of int to print
- *
- * Return: Nothing
- */
-void print_integer_recursive(int num)
+* print_char - Print a character
+* @args: va_list containing the character to print
+* Return: Number of characters printed
+*/
+int print_char(va_list args)
 {
-	if (num == 0)
-	{
-		return;
-	}
-	print_integer_recursive(num / 10);
-	_putchar((num % 10) + '0');
+	return (_putchar(va_arg(args, int)));
 }
 
 /**
- * print_integer - print an integer
- * @args: arguments list
- *
- * Return: Nothing
- */
-void print_integer(va_list *args)
+* print_string - Print a string
+* @args: va_list containing the string to print
+* Return: Number of characters printed
+*/
+int print_string(va_list args)
 {
-	int intgr = va_arg(*args, int);
+	char *str = va_arg(args, char *);
+	int count = 0;
 
-	if (intgr == 0)
+	if (!str)
+	str = "(null)";
+	while (*str)
 	{
-		_putchar('0');
-		return;
+		count += _putchar(*str);
+		str++;
 	}
-
-	if (intgr < 0)
-	{
-		_putchar('-');
-		intgr = -intgr;
-	}
-	print_integer_recursive(intgr);
+	return (count);
 }
 
 /**
- * print_string - print a string of character
- * @args: arguments list
- *
- * Return: Nothing
- */
-void print_string(va_list *args)
+* print_percent - Print a percent sign
+* @args: Unused va_list
+* Return: Number of characters printed
+*/
+int print_percent(va_list args)
 {
-	char *s = va_arg(*args, char *);
-
-	if (s == NULL)
-	{
-		s = "(null)";
-	}
-
-	while (*s)
-	{
-		_putchar(*s);
-		s++;
-	}
+	(void)args;
+	return (_putchar('%'));
 }
 
 /**
- * print_char - function that prints a single character
- * @args: arguments list
- *
- * Return: print the specified character
- */
-void print_char(va_list *args)
+* print_number - Helper function to print an integer recursively
+* @n: Integer to be printed
+* Return: Number of characters printed
+*/
+int print_number(unsigned int n)
 {
-	char c = (char)va_arg(*args, int);
+	int count = 0;
 
-	_putchar(c);
+	if (n / 10)
+		count += print_number(n / 10);
+		count += _putchar((n % 10) + '0');
+}
+
+/**
+* print_integer - Print an integer from va_list
+* @args: va_list containing the integer to print
+* Return: Number of characters printed
+*/
+int print_integer(va_list args)
+{
+	int n = va_arg(args, int);
+	unsigned int num;
+	int count = 0;
+
+	if (n < 0)
+	{
+		count += _putchar('-');
+		num = -n;
+	}
+	else
+		num = n;
+		count += print_number(num);
+	return (count);
 }
