@@ -1,14 +1,14 @@
-NAME
-   _printf
-   Function that produces output according to a format.
+.\" NAME
+.TH _printf
+.SH Function that produces output according to a format.
    
 SYNOPSIS
-    #include "main.h"
-    int _printf(const char *format, ...)
+.SH #include "main.h"
+.SH int _printf(const char *format, ...)
     
 DESCRIPTION
-    The _printf() function produces output according to a format.
-    _printf() write output to the stdout, the standard output stream.
+.SH The _printf() function produces output according to a format.
+.SH _printf() write output to the stdout, the standard output stream.
 
 		%c	-	Print a character
 		%s	-	Print a string
@@ -17,17 +17,17 @@ DESCRIPTION
 		%i	-	Print an integer
 
 EXAMPLES
-    Some examples of common usage.
+.SH Some examples of common usage.
 	_printf("Hello World");
 	_printf("I'm", %d,"years old")
 
 RETURN VALUE
-	Return the numbers of character counted
+.SH Return the numbers of character counted
 
 DATE
-	27 November 2024
+.SH 27 November 2024
 
 AUTHORS
-   Antoine MUSCI	
-   Kevin ROUGET		
-   Alexandre MOUSSE	
+.SH Antoine MUSCI	
+.SH Kevin ROUGET		
+.SH Alexandre MOUSSE	
