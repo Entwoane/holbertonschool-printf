@@ -61,5 +61,5 @@ It has been coded and compiled on Ubuntu 20.04.
 
 This code has been tested by us locally, and we used valgrind to check the memory allocation.
 
-Made by: [Antoine Musci](https://github.com/Entwoane) and [Kevin Rouget](https://github.com/koryos77).
+Made by: [Antoine Musci](https://github.com/Entwoane), [Kevin Rouget](https://github.com/koryos77) and [Alexandre Mousse](https://github.com/Alex-git-pro)
 
