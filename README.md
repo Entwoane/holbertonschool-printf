@@ -34,18 +34,20 @@ The file ***print_functions.c*** has all our functions needed to our **\_printf*
 
 */
 
-void print_string(va_list args)
-
+int print_string(va_list args)
 {
+	char *str = va_arg(args, char *);
+	int count = 0;
 
-	char *s = va_arg(args, char *);
+	if (!str)
+	str = "(null)";
 
+	while (*str)
 	{
-
-	_putchar(*s++);
-
+		count += _putchar(*str);
+		str++;
 	}
-
+	return (count);
 }
 
 ```
@@ -55,7 +57,7 @@ The file ***\_printf.c***  is the file which will print your arguments with the 
 
 The compiler used is : ***gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c***
 
-It has been coded and compiled on Ubuntu 20.04.
+It has been coded and compiled on Ubuntu 24.04.
 
 This code has been tested by us locally, and we used valgrind to check the memory allocation.
 
